@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25ea817e-e243-45df-b910-97658228d6c9" name="Default Changelist" comment="" />
+    <list default="true" id="25ea817e-e243-45df-b910-97658228d6c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/renew/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/renew/android/app/src/main/java/com/renew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/renew/android/app/src/main/java/com/renew/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/renew/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/renew/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/renew/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/renew/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/renew/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/renew/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/renew/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

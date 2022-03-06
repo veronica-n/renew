@@ -37,7 +37,7 @@ export const MapViewScreen = () => {
     const markers_sketchy = [
         {
             latitude: 49.2717299,
-            longitude: -123.0693109,
+            longitude: -123.0693129,
             title: 'High criminal rates',
             subtitle: 'High rates of...'
         },
@@ -48,11 +48,29 @@ export const MapViewScreen = () => {
             subtitle: 'High rates of...'
         },
         {
-            latitude: 49.2821779,
+            latitude: 49.2717299,
              longitude: -123.1041642,
              title: 'High criminal rates',
              subtitle: 'High rates of...'
         },
+        {
+            latitude: 49.292101,
+            longitude: -123.0481959,
+            title: 'High criminal rates',
+            subtitle: 'High rates of...'
+        },
+        {
+            latitude: 49.2422269,
+             longitude: -123.1043032,
+            title: 'High criminal rates',
+            subtitle: 'High rates of...'
+        },
+        {
+            latitude: 49.2717299,
+            longitude: -123.0693109,
+            title: 'User Location',
+            subtitle: 'You are here'
+        }
 
     ]
     const markers_health = [
@@ -74,6 +92,12 @@ export const MapViewScreen = () => {
              title: 'Health Care',
              subtitle: 'health care...'
         },
+        {
+            latitude: 49.2717299,
+            longitude: -123.0693109,
+            title: 'User Location',
+            subtitle: 'You are here'
+        }
 
     ]
     const markers_food = [
@@ -95,6 +119,12 @@ export const MapViewScreen = () => {
              title: 'Food Bank',
              subtitle: 'food...'
         },
+        {
+            latitude: 49.2717299,
+            longitude: -123.0693109,
+            title: 'User Location',
+            subtitle: 'You are here'
+        }
 
     ]
   return (
@@ -134,7 +164,7 @@ export const MapViewScreen = () => {
        </MapView>
        <View style = {styles.filterRow}>
             <MapFilter
-                text={'Sketchy Areas'} 
+                text={'Unsafe Areas'} 
                 onPress={() => {
                     if (isPressed1 === 'false') {
                         setButton1('filter1');

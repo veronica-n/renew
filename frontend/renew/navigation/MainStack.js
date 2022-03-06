@@ -7,6 +7,7 @@ import {Colours} from '../src/components/constants';
 
 import {CommunityStack} from './CommunityStack';
 import { ProfileScreen } from '../src/screens/ProfileScreen';
+import { MapViewScreen } from '../src/screens/Resources';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ export const MainStack = () => {
                 }}
             />
             <Tab.Screen name='Resources'
-                component={ProfileScreen}
+                component={MapViewScreen}
                 options = {{
                     tabBarIcon: ({ color }) => (
                     <Ionicons name="heart-outline" color={color} size={35} />

@@ -3,11 +3,13 @@ import {
   StyleSheet,
   View,
   Dimensions, 
-PermissionsAndroid} from 'react-native';
-
+PermissionsAndroid,
+TouchableOpacity,
+Text,
+TextInput} from 'react-native';
+import { Colours } from '../components/constants';
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
-import Map  from "react-native-maps";
-
+import { MapFilter } from '../components/MapFilters';
 const height = Dimensions.get('window').height;
 
 export const MapViewScreen = () => {
@@ -43,7 +45,6 @@ export const MapViewScreen = () => {
                 alert(granted) // just to ensure that permissions were granted
                 });
             }}
-        
            provider={PROVIDER_GOOGLE}
            style={styles.maps}
            region={{
@@ -58,7 +59,6 @@ export const MapViewScreen = () => {
            showsCompass={true}
            >
             { markers.map((each, i) => {
-            console.log('each: ', each);
             return ( 
                 <Marker
                     key={i}
@@ -67,21 +67,58 @@ export const MapViewScreen = () => {
                     coordinate={{ latitude: each.latitude, longitude: each.longitude }}
                     />
             )
-        }) }
+            }) } 
        </MapView>
+       <View style = {styles.filterRow}>
+            <MapFilter
+                text={'Sketchy Areas'} />
+            <MapFilter
+                text={'Healthcare Centers'} />
+           <MapFilter
+                text={'Food Banks'} />
       </View>
-   </View>);
+       
+      </View>
+      </View>
+      );
 }
 
 
 const styles = StyleSheet.create({
   mapcontainer: {
-        zIndex: -1,
         height: height,
-        justifyContent: 'flex-end',
         alignItems: 'center',
+        flex: 1,  
+        justifyContent: 'center'
   },
   maps: {
         ...StyleSheet.absoluteFillObject,
   },
+  filter: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    width: '39%',
+    height: 34,
+    backgroundColor: Colours.darkBlue,
+    marginBottom: 10,
+    marginHorizontal: 5
+},
+filterText: {
+    fontFamily: 'VarelaRoundRegular',
+    color: Colours.black,
+    fontSize: 15,
+},
+filterRow : {
+    flexDirection: 'row', 
+    alignContent: 'center', 
+    alignItems: 'center', 
+    alignSelf: 'stretch',
+    display: 'flex',
+    flexWrap: 'wrap',
+    zIndex: 1,
+    position: 'absolute',
+    top: 10
+    
+}
 })

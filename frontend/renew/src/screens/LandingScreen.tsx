@@ -25,11 +25,6 @@ export const LandingScreen = ({navigation}: Props) => {
                 />
                 <ActionText text={'Create account'} colour={Colours.darkBlue} onPress={() => navigation.navigate('SignUpScreen')} />
             </View>
-            <ActionButton 
-                text={'Log out'} 
-                backgroundColour={Colours.darkBlue} 
-                onPress={() => logout()}
-            />
         </ScreenContainer>
     );
 };

@@ -22,7 +22,32 @@ export const AuthProvider = ({children}) => {
         login: async (email, password) => {
           try {
             await auth().signInWithEmailAndPassword(email, password);
-            //dispatch();
+            const id = auth().currentUser.uid;
+            fetch(`http://localhost:3001/${id}`, {
+              method: 'GET',
+            })
+            .then((response) => response.json())
+            .then((response) => {
+              const user = {
+                id,
+                groupId: response['group'],
+                name: response['name'],
+                email: response['email'],
+                password: response['password'],
+                origin: response['country of origin'],
+                residence: response['country of residence'],
+              };
+              
+              const community = {
+                id: response['group'],
+                posts: response['group posts']
+              };
+
+              dispatch({
+                  type: 'UpdateUser',
+                  ...user,
+              });
+            });
           } catch (e) {
             console.log(e);
             console.log('Sign in Failed');
@@ -36,6 +61,21 @@ export const AuthProvider = ({children}) => {
                 console.log('name: ' + name);
                 console.log('origin: ' + origin);
                 console.log('current country: ' + dest);
+                fetch('http://localhost:3001/user', {
+                  method: 'POST',
+                  headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    authID: user.user.uid,
+                    email,
+                    name,
+                    password,
+                    origin,
+                    residence: dest,
+                  }),
+                })
             });
           } catch (e) {
             console.log(e);

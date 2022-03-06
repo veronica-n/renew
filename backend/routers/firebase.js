@@ -25,7 +25,7 @@ function createComment(req, res, next){
 
 function getUserByID(req, res, next){
     const ret  = Firebase.getUserByID(req.params.userID);
-    res.send(ret); // send all  the user and  group info
+    res.send(ret); // send all the user and  group info
 }
 
 module.exports = router;

@@ -6,11 +6,13 @@ import {
     Dimensions,
     View
 } from 'react-native';
+import { ProfileBubble } from './Comment';
 
 interface Props {
     text: string;
     user: string,
     backgroundColour: string;
+    type?: 'app' | 'user';
     onPress: () => void;
     children?: any;
 }
@@ -18,7 +20,8 @@ interface Props {
 export const ActionPost = ({text, user, backgroundColour, onPress, children}: Props) => {
     return (
         <View>
-            <ActionPostContent text={text} user={user} backgroundColour={backgroundColour} onPress={onPress} />
+            <ActionPostContent text={text} user={user} type={user === 'Renew Team' ? 'app' : 'user'}
+                               backgroundColour={backgroundColour} onPress={onPress} />
             <TouchableOpacity 
                 style={{...styles.orientationComent}} onPress={onPress} 
             >
@@ -29,10 +32,13 @@ export const ActionPost = ({text, user, backgroundColour, onPress, children}: Pr
     );
 };
 
-export const ActionPostContent = ({text, user, backgroundColour, onPress, children}: Props) => {
+export const ActionPostContent = ({text, user, backgroundColour, type, onPress, children}: Props) => {
     return (
         <View> 
-            <Text style={styles.user}>{user} </Text>
+            <View style={styles.postHeader}>
+                <ProfileBubble marginBottom={10} type={type ?? 'app'} />
+                <Text style={styles.user}>{user} </Text>
+            </View>
             <TouchableOpacity 
                 style={{...styles.orientation, backgroundColor: backgroundColour}} onPress={onPress}
             >
@@ -49,7 +55,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '100%',
         height: 106,
-        marginBottom: 8
+        marginBottom: 8,
+        paddingHorizontal: 5
     },
     text: {
         fontFamily: 'VarelaRoundRegular',
@@ -72,5 +79,10 @@ const styles = StyleSheet.create({
         fontFamily: 'VarelaRoundRegular',
         marginLeft: 10,
         marginBottom: 10,
-      },
+    },
+    postHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 10,
+    }
 });

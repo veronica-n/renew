@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -17,10 +17,10 @@ interface Props {
 }
 
 export const CommunityScreen = ({navigation}: Props) => {
-    const data = [
+    const [data, setData] = useState([
         {
           name: "User #1",
-          post: "Bubble tea?",
+          post: "I'm new to the area, does anyone know where I can get shoes?",
           uid: '111',
           key: '1'
         },
@@ -36,7 +36,7 @@ export const CommunityScreen = ({navigation}: Props) => {
             uid: '333',
             key: '3'
         }
-    ];
+    ]);
     const headerComponent = () => (
         <View>
             <CommunityHeader name={'Lena'} origin={'Korea'} destination={'Canada'} />
@@ -71,7 +71,7 @@ export const CommunityScreen = ({navigation}: Props) => {
                             content: item.post,
                             backgroundColour: '#839788',
                             timestamp: Date().toString(),
-                            comments: ['hello', 'this is a very long comment blah blah blha blhladjsdh.aksjdhkjhdjks', 'bye']
+                            comments: ['Hi! Winners has great choices for very reasonable prices', '^ Agree!', 'My personal favourite is DSW']
                         })}/>
                 )}
                 keyExtractor={item => item.key}

@@ -5,7 +5,9 @@ import {
     Text,
     Dimensions,
     View,
-    Image
+    Image,
+    StyleProp,
+    StyleSheetProperties
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Colours } from './constants';
@@ -28,13 +30,14 @@ export const Comment = ({type, content}: CommentProps) => {
 
 interface ProfileBubbleProps {
     type: 'user' | 'app';
+    marginBottom?: number;
 };
 
-export const ProfileBubble = ({type}: ProfileBubbleProps) => {
+export const ProfileBubble = ({type, marginBottom}: ProfileBubbleProps) => {
     if (type == 'user') {
-        return <Ionicons name="person-circle-outline" color={Colours.sageGreen} size={30} />
+        return <Ionicons style={{marginBottom}} name="person-circle-outline" color={Colours.sageGreen} size={30} />
     } else {
-        return <Image source={require('../assets/AppIcon.png')} />
+        return <Image style={{marginBottom}} source={require('../assets/AppIcon.png')} />
     }
 };
 

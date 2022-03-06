@@ -24,7 +24,7 @@ export const ActionText = ({text, colour, onPress}: Props) => {
 
 const styles = StyleSheet.create({
     spacing: {
-        marginTop: 10,
+        marginTop: 20,
     },
     text: {
         fontFamily: 'VarelaRoundRegular',

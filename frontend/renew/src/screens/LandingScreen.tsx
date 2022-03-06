@@ -1,28 +1,46 @@
-import React from 'react';
-import {
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    useColorScheme,
-    View,
-    Image,
-} from 'react-native';
-import { ActionButton } from '../components/ActionButton';
-import { ActionText } from '../components/ActionText';
-import { ScreenContainer } from '../components/ScreenContainer';
+import React, { useContext } from 'react';
+import {Image, StyleSheet, View} from 'react-native';
+import { AuthContext } from '../../navigation/AuthProvider';
+import {ActionButton} from '../components/ActionButton';
+import {ActionText} from '../components/ActionText';
+import { Colours } from '../components/constants';
+import {ScreenContainer} from '../components/ScreenContainer';
 
-export const LandingScreen = () => {
+interface Props {
+    navigation: any,
+}
+
+export const LandingScreen = ({navigation}: Props) => {
+    // @ts-ignore
+    const {logout} = useContext(AuthContext);
+    
     return (
         <ScreenContainer>
-            <Image source={require('../assets/renewLogo.png')} />
+            <Image style={styles.image} source={require('../assets/renewLogo.png')} />
+            <View style={styles.actionSection}>
+                <ActionButton 
+                    text={'Log in'} 
+                    backgroundColour={Colours.darkBlue} 
+                    onPress={() => navigation.navigate('LoginScreen')}
+                />
+                <ActionText text={'Create account'} colour={Colours.darkBlue} onPress={() => navigation.navigate('SignUpScreen')} />
+            </View>
             <ActionButton 
-                text={'Log in'} 
-                backgroundColour={'#4A6FA5'} 
-                onPress={() => {}}
+                text={'Log out'} 
+                backgroundColour={Colours.darkBlue} 
+                onPress={() => logout()}
             />
-            <ActionText text={'Create account'} colour={'#4A6FA5'} onPress={() => {}} />
         </ScreenContainer>
     );
 };
+
+const styles = StyleSheet.create({
+    image: {
+        marginTop: '30%',
+    },
+    actionSection: {
+        width: '100%',
+        alignItems: 'center',
+        marginTop: '40%'
+    }
+});

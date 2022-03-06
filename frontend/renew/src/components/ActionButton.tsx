@@ -4,6 +4,7 @@ import {
     StyleSheet,
     Text,
 } from 'react-native';
+import {Colours} from './constants';
 
 interface Props {
     text: string;
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'VarelaRoundRegular',
-        color: '#FFFFFF',
+        color: Colours.white,
         fontSize: 22,
     }
 });

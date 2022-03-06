@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "625622979869",
+    "firebase_url": "https://cmd-f2022-default-rtdb.firebaseio.com",
+    "project_id": "cmd-f2022",
+    "storage_bucket": "cmd-f2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625622979869:android:18d2a0b8a9dbd8bcca7df4",
+        "android_client_info": {
+          "package_name": "com.renew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625622979869-ok2vkjd99s7q9o3ufiab8sk1067om0br.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjCISbgmPqdDYfVO0lCMrbTOPi-r2CO-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625622979869-ok2vkjd99s7q9o3ufiab8sk1067om0br.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

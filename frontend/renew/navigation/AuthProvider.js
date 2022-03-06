@@ -25,11 +25,14 @@ export const AuthProvider = ({children}) => {
             console.log('Sign in Failed');
           }
         },
-        register: async (email, password) => {
+        register: async (name, email, password, origin, dest) => {
           try {
             await auth().createUserWithEmailAndPassword(email, password)
             .then((user) => {
                 console.log('successfully created user');
+                console.log('name: ' + name);
+                console.log('origin: ' + origin);
+                console.log('current country: ' + dest);
             });
           } catch (e) {
             console.log(e);

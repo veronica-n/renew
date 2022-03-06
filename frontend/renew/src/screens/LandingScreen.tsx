@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+import { AuthContext } from '../../navigation/AuthProvider';
 import {ActionButton} from '../components/ActionButton';
 import {ActionText} from '../components/ActionText';
+import { Colours } from '../components/constants';
 import {ScreenContainer} from '../components/ScreenContainer';
 
 interface Props {
@@ -9,17 +11,25 @@ interface Props {
 }
 
 export const LandingScreen = ({navigation}: Props) => {
+    // @ts-ignore
+    const {logout} = useContext(AuthContext);
+    
     return (
         <ScreenContainer>
             <Image style={styles.image} source={require('../assets/renewLogo.png')} />
             <View style={styles.actionSection}>
                 <ActionButton 
                     text={'Log in'} 
-                    backgroundColour={'#4A6FA5'} 
+                    backgroundColour={Colours.darkBlue} 
                     onPress={() => navigation.navigate('LoginScreen')}
                 />
-                <ActionText text={'Create account'} colour={'#4A6FA5'} onPress={() => {}} />
+                <ActionText text={'Create account'} colour={Colours.darkBlue} onPress={() => navigation.navigate('SignUpScreen')} />
             </View>
+            <ActionButton 
+                text={'Log out'} 
+                backgroundColour={Colours.darkBlue} 
+                onPress={() => logout()}
+            />
         </ScreenContainer>
     );
 };

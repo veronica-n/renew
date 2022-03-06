@@ -11,32 +11,50 @@ interface Props {
     navigation: any,
 }
 
-export const LoginScreen = ({navigation}: Props) => {
+export const SignUpScreen = ({navigation}: Props) => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [origin, setOrigin] = useState('');
+    const [destination, setDestination] = useState('');
     //@ts-ignore
-    const {login} = useContext(AuthContext);
+    const {register} = useContext(AuthContext);
 
     return (
         <>
-        <Text style={styles.title}>Sign in to Renew</Text>
+        <Text style={styles.title}>Create Account</Text>
         <ScreenContainer>
             <TextField 
-                placeholder='Email'
+                placeholder='Name (Required)'
+                borderColour={Colours.darkBlue}
+                onChangeText={setName}
+            />
+            <TextField 
+                placeholder='Email (Required)'
                 borderColour={Colours.darkBlue}
                 onChangeText={setEmail}
             />
             <TextField 
-                placeholder='Password'
+                placeholder='Country of Origin (Required)'
+                borderColour={Colours.darkBlue}
+                onChangeText={setOrigin}
+            />
+            <TextField 
+                placeholder='Country of Residence (Required)'
+                borderColour={Colours.darkBlue}
+                onChangeText={setDestination}
+            />
+            <TextField 
+                placeholder='Password (Required)'
                 isPassword
                 borderColour={Colours.darkBlue}
                 onChangeText={setPassword}
             />
             <View style={styles.actionSection}>
                 <ActionButton 
-                    text={'Log in'} 
+                    text={'Sign up'} 
                     backgroundColour={Colours.darkBlue} 
-                    onPress={() => login(email, password)}
+                    onPress={() => register(name, email, password, origin, destination)}
                 />
                 <ActionText text={'Cancel'} colour={Colours.darkBlue} onPress={() => navigation.goBack()} />
             </View>
@@ -56,6 +74,6 @@ const styles = StyleSheet.create({
     actionSection: {
         width: '100%',
         alignItems: 'center',
-        marginTop: '67%'
+        marginTop: '8%'
     },
 });

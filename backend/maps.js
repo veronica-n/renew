@@ -1,5 +1,7 @@
-import {Client} from "@googlemaps/google-maps-services-js";
-const client = new Client({})
+
+
+const Client = require('@googlemaps/google-maps-services-js');
+const client = new Client.Client({})
 
 // get current lat, lng from frontend
 // returns coordinates of health care centres within 20 km
@@ -25,8 +27,7 @@ async function  mapHealth(curLat, curLng){
         const coordinate = r.data.results[0].geometry.location;
         coordinates.push(coordinate);
     }
-    return coordinates;
-    // TO DO: GET - send the coordinates to frontend
+    return JSON.stringify(coordinates);
 }
 
 // get current lat, lng from frontend
@@ -53,8 +54,7 @@ async function  mapFoodbank(curLat, curLng){
         const coordinate = r.data.results[0].geometry.location;
         coordinates.push(coordinate);
     }
-    return coordinates;
-    // TO DO: GET - send the coordinates to frontend
+    return JSON.stringify(coordinates);
 }
 
 // get current lat, lng from frontend
@@ -81,8 +81,5 @@ async function mapSketchy(curLat, curLng){
             const coordinate = r.data.results[0].geometry.location;
             coordinates.push(coordinate);
         }
-        return coordinates;
-        // TO DO: GET - send the coordinates to frontend
+        return JSON.stringify(coordinates);
 }
-
-// module.exports = 

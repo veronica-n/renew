@@ -6,7 +6,7 @@ In light of the war in Ukraine today, millions of Ukranians have fled into neigh
 
 Team Members: Emily Lukas, Veronica Nguyen, Sofia Bandeira dos Reis, Lena Kim
 
-# 🛠 How we built it
+# 🧑🏻‍💻 How we built it
 
 We used Figma to design UX/UI as a collaborative prototyping tool. React Native and Android Studio were used to develop the interactive interface with Redux for state management. For the back-end development, we used Node.js for the server-side platform with its app framework Express. Firebase was used for authen
 

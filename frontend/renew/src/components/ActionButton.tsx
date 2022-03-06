@@ -1,21 +1,24 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import {
     TouchableOpacity,
     StyleSheet,
     Text,
-    View,
 } from 'react-native';
 
 interface Props {
     text: string;
     backgroundColour: string;
+    onPress: () => void;
     children?: any;
 }
 
-export const ActionButton = ({text, backgroundColour, children}: Props) => {
+export const ActionButton = ({text, backgroundColour, onPress, children}: Props) => {
     return (
-        <TouchableOpacity style={{...styles.orientation, backgroundColour: backgroundColour}}>
-            <Text>{text}</Text>
+        <TouchableOpacity 
+            style={{...styles.orientation, backgroundColor: backgroundColour}}
+            onPress={onPress}
+        >
+            <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>
     );
 };
@@ -25,9 +28,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 8,
+        width: '85%',
+        height: 60,
     },
     text: {
-        fontFamily: 'VaerlaRoundRegular',
-        fontSize: 23,
+        fontFamily: 'VarelaRoundRegular',
+        color: '#FFFFFF',
+        fontSize: 22,
     }
 });

@@ -1,9 +1,9 @@
 import auth from '@react-native-firebase/auth';
-import { Community, User } from "./types";
+import { CommunityState, UserState } from "./types";
 
 export interface AppState {
-    user: User;
-    community: Community;
+    user: UserState;
+    community: CommunityState;
 };
 
 const getInitialAppState = (): AppState => {

@@ -103,3 +103,5 @@ function createComment(userID, postID, content) {
       });
     })
 }  
+
+// module.exports = 

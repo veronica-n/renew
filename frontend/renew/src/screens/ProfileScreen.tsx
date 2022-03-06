@@ -13,7 +13,11 @@ import {
 import { ActionButton } from '../components/ActionButton';
 import { ScreenContainer } from '../components/ScreenContainer';
 
-export const Profile = ({ navigation }) => {
+interface Props {
+    navigation: any,
+}
+
+export const ProfileScreen = ({navigation}: Props) => {
   const { height } = Dimensions.get('window');
   const data = {name: "Lena Kim",
                 email: "lena@gmail.com",

@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     Dimensions
   } from 'react-native';
-import {Community}  from '../screens/Community';
+import {Community}  from '../screens/CommunityScreen';
 import {LandingScreen}  from '../screens/LandingScreen';
 const Tab = createBottomTabNavigator();
 

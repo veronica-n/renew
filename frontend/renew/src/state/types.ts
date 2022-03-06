@@ -1,6 +1,7 @@
-export interface User {
+export interface UserState {
     id?: string;
     groupId?: string;
+    name?: string;
     email?: string;
     password?: string;
     origin?: string;
@@ -10,6 +11,7 @@ export interface User {
 export interface Comment {
     id: string;
     userId: string;
+    postId: string;
     content: string;
     timestamp: Date;
 };
@@ -22,7 +24,7 @@ export interface Post {
     comments?: Array<Comment>;
 };
 
-export interface Community {
+export interface CommunityState {
     id?: string;
     posts?: Array<Post>;
 };

@@ -17,7 +17,11 @@ import { ActionPost } from '../components/ActionPost';
 import { ActionText } from '../components/ActionText';
 import { ScreenContainer } from '../components/ScreenContainer';
 
-export const Community = ({navigation}) => {
+interface Props {
+    navigation: any,
+}
+
+export const CommunityScreen = ({navigation}: Props) => {
     const data = [
         {
           name: "User #1",
@@ -56,6 +60,7 @@ export const Community = ({navigation}) => {
     const separator = () => (
         <View style={styles.border}/>
     )
+
     return (
         <ScreenContainer>
             <FlatList
@@ -77,7 +82,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 21,
         justifyContent: 'center',
-        fontFamily: 'Inter-Regular',
         marginTop: 20,
         fontSize: 25,
         fontWeight: 'bold',
@@ -87,7 +91,6 @@ const styles = StyleSheet.create({
       subTitle: {
         alignItems: 'center',
         justifyContent: 'center',
-        fontFamily: 'Inter-Regular',
         marginHorizontal: 21,
         marginTop: 20,
         marginBottom: 27,

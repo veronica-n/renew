@@ -28,7 +28,6 @@ export const ActionPost = ({text, user, backgroundColour, onPress, children}: Pr
                 <Text style={styles.comment}>View all comments</Text>
             </TouchableOpacity>
         </View>
-        
     );
 };
 

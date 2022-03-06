@@ -12,7 +12,10 @@ import {
 } from 'react-native';
 import { AuthContext } from '../../navigation/AuthProvider';
 import { ActionButton } from '../components/ActionButton';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Colours } from '../components/constants';
 import { ScreenContainer } from '../components/ScreenContainer';
+import { ProfileOption } from '../components/ProfileOption';
 
 interface Props {
     navigation: any,
@@ -21,7 +24,6 @@ interface Props {
 export const ProfileScreen = ({navigation}: Props) => {
   // @ts-ignore
   const {logout} = useContext(AuthContext);
-  const { height } = Dimensions.get('window');
   const data = {name: "Lena Kim",
                 email: "lena@gmail.com",
                 from: "South Korea",
@@ -31,55 +33,55 @@ export const ProfileScreen = ({navigation}: Props) => {
   return (
     <View>
         <Text style={styles.title}>Profile</Text> 
-        <View style={styles.rec}>
-            <Text style={styles.name}>{data.name}</Text>  
-            <Text style={styles.to}>{data.to}</Text>  
-        </View> 
-        <Text style={styles.info}>{data.email}</Text>  
-        <View style={styles.border}/>
-        <Text style={styles.info}>{data.from}</Text> 
-        <View style={styles.border}/> 
-        <Text style={styles.info}>{data.password}</Text>  
-        <View style={styles.border}/>
-        <Text style={styles.password}>Change password</Text>  
-        <View style={styles.signout}>
-        <ActionButton 
-                text={'Sign out'} 
-                backgroundColour={'#4A6FA5'} 
-                onPress={() => logout()}
+        <ScreenContainer>
+            <View style={styles.profileOverview}>
+                <Ionicons name="person-circle-outline" color={Colours.darkTurquoise} size={50} />
+                <View style={styles.infoSection}>
+                    <Text style={styles.name}>{data.name}</Text>
+                    <Text style={styles.residence}>{data.email}</Text>  
+                    <Text style={styles.residence}>Country of origin: {data.from}</Text>  
+                    <Text style={styles.residence}>Country of residence: {data.to}</Text>
+                </View>
+            </View>
+            <View style={{height:20}} />
+            <ProfileOption text={'Change Password'} icon={'key-outline'} />
+            <ProfileOption text={'Update Email'} icon={'mail-outline'} />
+            <View style={{height:'35%'}} />
+            <ActionButton 
+                    text={'Sign out'} 
+                    backgroundColour={Colours.darkBlue} 
+                    onPress={() => logout()}
             />
-        </View>
+        </ScreenContainer>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
     title: {
-      marginTop: 21,
-      marginLeft: 29,
       fontFamily: 'VarelaRoundRegular',
       fontSize: 25,
-      color: '#4A6FA5',
-      }, 
+      color: Colours.darkBlue,
+      marginLeft: 20,
+      marginTop: 20
+    }, 
     name: {
-        marginTop: 20,
         fontFamily: 'VarelaRoundRegular',
-        fontSize: 28,
-        color: '#4A6FA5',
-        }, 
+        fontSize: 25,
+        color: Colours.darkTurquoise,
+    }, 
     info: {
         marginTop: 30,
         fontFamily: 'VarelaRoundRegular',
         fontSize: 17,
         color: '#4A6FA5',
         alignSelf: 'center'
-        }, 
-    to: {
-        marginTop: 10,
+    }, 
+    residence: {
         fontFamily: 'VarelaRoundRegular',
-        fontSize: 20,
-        color: '#4A6FA5',
-        }, 
+        fontSize: 16,
+        color: Colours.darkTurquoise,
+    }, 
     border: {
         marginVertical: 2,
         backgroundColor: '#4A6FA5',
@@ -101,16 +103,22 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#839788',
         }, 
-    rec : {
-        alignItems: 'center',
+    profileOverview: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
         justifyContent: 'center',
         alignSelf: 'center',
         borderRadius: 8,
         marginVertical: 20,
-        width: '85%',
-        height: 136,
-        color: '#4A6FA5',
-        borderColor: '#4A6FA5',
+        width: '90%',
+        height: 126,
+        borderColor: Colours.mediumGray,
         borderWidth: 1,
+        padding: 10
+    },
+    infoSection: {
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        marginLeft: 20
     }
 });

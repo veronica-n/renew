@@ -37,6 +37,8 @@ export const CommunityScreen = ({navigation}: Props) => {
             key: '3'
         }
     ]);
+    const weeklyPost = 'Weekly Post: any new members in need of help?';
+
     const headerComponent = () => (
         <View>
             <CommunityHeader name={'Lena'} origin={'Korea'} destination={'Canada'} />
@@ -46,7 +48,7 @@ export const CommunityScreen = ({navigation}: Props) => {
                 </View>
             </TouchableOpacity>
             <View style={styles.border}/>
-            <ActionPost text={'Weekly Post'} user={'Renew Team'} backgroundColour={'#4F6D7A'} onPress={() => {}} />
+            <ActionPost text={weeklyPost} user={'Renew Team'} backgroundColour={'#4F6D7A'} onPress={() => {}} />
             <View style={styles.border}/>
         </View>
     )

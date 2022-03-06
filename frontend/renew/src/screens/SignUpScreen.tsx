@@ -6,7 +6,7 @@ import {ActionText} from '../components/ActionText';
 import { Colours, FontSizes } from '../components/constants';
 import {ScreenContainer} from '../components/ScreenContainer';
 import { TextField } from '../components/TextField';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 interface Props {
     navigation: any,
 }
@@ -23,6 +23,10 @@ export const SignUpScreen = ({navigation}: Props) => {
     return (
         <>
         <Text style={styles.title}>Create Account</Text>
+        <KeyboardAwareScrollView
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      scrollEnabled={false}
+    >
         <ScreenContainer>
             <TextField 
                 placeholder='Name (Required)'
@@ -59,6 +63,7 @@ export const SignUpScreen = ({navigation}: Props) => {
                 <ActionText text={'Cancel'} colour={Colours.darkBlue} onPress={() => navigation.goBack()} />
             </View>
         </ScreenContainer>
+        </KeyboardAwareScrollView>
         </>
     );
 };

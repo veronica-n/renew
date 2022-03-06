@@ -23,77 +23,77 @@ export const MapViewScreen = () => {
     const [markers, setMarkers] = useState([{
         latitude: 49.2717299,
         longitude: -123.0693109,
-        title: 'health care',
-        subtitle: 'health care...'
+        title: 'User Location',
+        subtitle: 'You are here'
     }]);
     const markers_init = [
         {
             latitude: 49.2717299,
             longitude: -123.0693109,
-            title: 'health care',
-            subtitle: 'health care...'
+            title: 'User Location',
+            subtitle: 'You are here'
         }
     ]
     const markers_sketchy = [
         {
             latitude: 49.2717299,
             longitude: -123.0693109,
-            title: 'health care',
-            subtitle: 'health care...'
+            title: 'High criminal rates',
+            subtitle: 'High rates of...'
         },
         {
             latitude: 49.282101,
             longitude: -123.0971959,
-            title: 'health care 2',
-            subtitle: 'health care 2'
+            title: 'High criminal rates',
+            subtitle: 'High rates of...'
         },
         {
             latitude: 49.2821779,
              longitude: -123.1041642,
-            title: 'health care 3',
-            subtitle: 'health care 3'
+             title: 'High criminal rates',
+             subtitle: 'High rates of...'
         },
 
     ]
     const markers_health = [
         {
-            latitude: 49.283286,
-             longitude: -123.0992306,
-            title: 'health care',
+            latitude: 49.293286,
+             longitude: -123.0495306,
+            title: 'Health Care',
             subtitle: 'health care...'
         },
         {
-            latitude: 49.2682067,
+            latitude: 49.2686067,
              longitude: -123.0715626,
-            title: 'health care 2',
-            subtitle: 'health care 2'
+             title: 'Health Care',
+             subtitle: 'health care...'
         },
         {
-            latitude: 49.2822269,
+            latitude: 49.2422269,
              longitude: -123.1043032,
-            title: 'health care 3',
-            subtitle: 'health care 3'
+             title: 'Health Care',
+             subtitle: 'health care...'
         },
 
     ]
     const markers_food = [
         {
-            latitude: 49.2717299,
-            longitude: -123.0693109,
-            title: 'health care',
-            subtitle: 'health care...'
+            latitude: 49.2767299,
+            longitude: -123.0683109,
+            title: 'Food Bank',
+            subtitle: 'food...'
         },
         {
-            latitude: 49.282101,
-            longitude: -123.0971959,
-            title: 'health care 2',
-            subtitle: 'health care 2'
+            latitude: 49.282801,
+            longitude: -123.1273959,
+            title: 'Food Bank',
+            subtitle: 'food...'
         },
         {
-            latitude: 49.2821779,
-             longitude: -123.1041642,
-            title: 'health care 3',
-            subtitle: 'health care 3'
+            latitude: 49.2861779,
+             longitude: -123.1241642,
+             title: 'Food Bank',
+             subtitle: 'food...'
         },
 
     ]

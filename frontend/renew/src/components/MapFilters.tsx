@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
     TouchableOpacity,
     StyleSheet,
@@ -8,26 +8,14 @@ import {Colours} from './constants';
 
 interface Props {
     text: string;
+    onPress: () => void;
+    button: string;
 }
-
-export const MapFilter = ({text}: Props) => {
-
-    const [button, setButton] = useState('');
-    const [isPressed, setPress] = useState('false');
-
-    
-    
+export const MapFilter = ({text, onPress, button}: Props) => {
     return (
         <TouchableOpacity 
             style={{...styles.orientation, backgroundColor: button === 'filter1' ? Colours.darkBlue : Colours.white}}
-            onPress={() => {
-                if (isPressed === 'false') {
-                    setButton('filter1');
-                    setPress('true');
-                }else{ 
-                    setButton(''); 
-                    setPress('false');
-                }}}
+            onPress={onPress}
         >
             <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>

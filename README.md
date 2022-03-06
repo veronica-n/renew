@@ -13,7 +13,7 @@ We used Figma to design UX/UI as a collaborative prototyping tool. React Native 
 # What it does?
 Our project, renew, is an app designed to provide support and resources for immigrants in a new country. The app name was chosen to represent the fact that we want to help refugees as they start a new life in a new country, hence renew. The app features a community function where users are grouped into communities based on where they came from and where they have immigrated to. Within these communities, users can post and comment about any questions or resources for users to learn from each other. Additionally, there is a map feature which filters for nearby food banks, hospitals, and areas with recent criminal activity. 
 
-# 💨 What's next for renew ?
+# What's next for renew ?
 
 Our team hopes to implement the following features for Renew:
 - Language: View the entire app in your native language

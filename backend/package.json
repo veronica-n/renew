@@ -1,0 +1,14 @@
+{
+  "name": "renew_backend",
+  "version": "1.0.0",
+  "description": "cmd-f 2022 hackathon",
+  "main": "firebase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hackgirls",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0"
+  }
+}

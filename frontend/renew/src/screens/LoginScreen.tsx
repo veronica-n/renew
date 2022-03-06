@@ -1,11 +1,13 @@
 import React from 'react';
-import {Image} from 'react-native';
+import {Image, Text} from 'react-native';
 import {ActionButton} from '../components/ActionButton';
 import {ActionText} from '../components/ActionText';
 import {ScreenContainer} from '../components/ScreenContainer';
 
-export const LandingScreen = () => {
+export const LoginScreen = () => {
     return (
+        <>
+        <Text>Sign in to Renew</Text>
         <ScreenContainer>
             <Image source={require('../assets/renewLogo.png')} />
             <ActionButton 
@@ -15,5 +17,6 @@ export const LandingScreen = () => {
             />
             <ActionText text={'Create account'} colour={'#4A6FA5'} onPress={() => {}} />
         </ScreenContainer>
+        </>
     );
 };

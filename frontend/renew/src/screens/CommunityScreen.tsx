@@ -11,6 +11,7 @@ import { ActionPost } from '../components/ActionPost';
 import { Colours } from '../components/constants';
 import { ScreenContainer } from '../components/ScreenContainer';
 import { CommunityHeader } from '../components/CommunityHeader';
+import { Post, UserState } from '../state/types';
 
 interface Props {
     navigation: any,
@@ -19,36 +20,64 @@ interface Props {
 export const CommunityScreen = ({navigation}: Props) => {
     const [data, setData] = useState([
         {
-          name: "User #1",
-          post: "I'm new to the area, does anyone know where I can get shoes?",
-          uid: '111',
-          key: '1'
+            name: "Renew Team",
+            post: 'Weekly Post: any new members in need of help?',
+            uid: '111',
+            key: '1',
+            comments: [
+                'I am getting settled in, going well so far',
+                'Yes, are there any grocery stores in Vancouver that are hiring right now? I am looking for a job',
+                'Walmart is hiring at multiple locations',
+                'Shoppers Drug Mart at Metrotown is hiring associates',
+            ],
         },
         {
-            name: "User #2",
-            post: "Library?",
-            uid: '222',
-            key: '2'
-          },
+            name: "Bob",
+            post: "I'm new to the area, does anyone know where I can get shoes?",
+            uid: '111',
+            key: '2',
+            comments: [
+                'Hi! Winners has great choices for very reasonable prices', 
+                '^ Agree!', 
+                'My personal favourite is DSW',
+            ]
+        },
         {
-            name: "User #3",
-            post: "clubs?",
-            uid: '333',
-            key: '3'
-        }
+            name: "Linda",
+            post: "What's the best library in the Metro Vancouver area?",
+            uid: '222',
+            key: '3',
+            comments: [
+                'I love studying at the downtown library, the architecture is so beautiful!', 
+                'Cameron library is small but cozy', 
+                'Highly recommend any of the UBC libraries!',
+            ]
+          },
     ]);
-    const weeklyPost = 'Weekly Post: any new members in need of help?';
+
+    const addNewPost = (content: string) => {
+        const newPost = {
+            name: 'Lena',
+            post: content,
+            uid: (data.length + 1).toString(),
+            key: (data.length + 1).toString(),
+            comments: [],
+        };
+
+        setData(() => [
+            ...data,
+            newPost,
+        ]);
+    };
 
     const headerComponent = () => (
         <View>
             <CommunityHeader name={'Lena'} origin={'Korea'} destination={'Canada'} />
-            <TouchableOpacity onPress={() => navigation.navigate("NewPostScreen")}>
+            <TouchableOpacity onPress={() => navigation.navigate("NewPostScreen", {addNewPost: addNewPost})}>
                 <View style={styles.newPostBox}>
                     <Text style={styles.newPostText}>Create a post...</Text>
                 </View>
             </TouchableOpacity>
-            <View style={styles.border}/>
-            <ActionPost text={weeklyPost} user={'Renew Team'} backgroundColour={'#4F6D7A'} onPress={() => {}} />
             <View style={styles.border}/>
         </View>
     )
@@ -65,15 +94,15 @@ export const CommunityScreen = ({navigation}: Props) => {
                     <ActionPost 
                         text={item.post} 
                         user={item.name} 
-                        backgroundColour={'#839788'} 
+                        backgroundColour={item.name == 'Renew Team' ? Colours.darkTurquoise : Colours.sageGreen} 
                         onPress={() => navigation.navigate('ViewPostScreen', {
                             id: Math.random().toString(),
                             userId: Math.random().toString(),
                             user: item.name,
                             content: item.post,
-                            backgroundColour: '#839788',
+                            backgroundColour: item.name == 'Renew Team' ? Colours.darkTurquoise : Colours.sageGreen,
                             timestamp: Date().toString(),
-                            comments: ['Hi! Winners has great choices for very reasonable prices', '^ Agree!', 'My personal favourite is DSW']
+                            comments: item.comments
                         })}/>
                 )}
                 keyExtractor={item => item.key}

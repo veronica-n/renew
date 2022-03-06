@@ -9,10 +9,12 @@ import { TextField } from '../components/TextField';
 
 interface Props {
     navigation: any,
+    route: any,
 }
 
-export const NewPostScreen = ({navigation}: Props) => {
+export const NewPostScreen = ({navigation, route}: Props) => {
     const [post, setPost] = useState('');
+    const {addNewPost} = route.params;
 
     return (
         <>
@@ -30,7 +32,10 @@ export const NewPostScreen = ({navigation}: Props) => {
                 <ActionButton 
                     text={'Publish'} 
                     backgroundColour={Colours.darkBlue} 
-                    onPress={() => {() => navigation.goBack()}}
+                    onPress={() => {
+                        addNewPost(post);
+                        navigation.goBack();
+                    }}
                 />
                 <ActionText text={'Cancel'} colour={Colours.darkBlue} onPress={() => navigation.goBack()} />
                 </View>

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginHorizontal: 21,
         marginTop: 10,
-        marginBottom: 27,
+        marginBottom: 20,
         fontSize: 15,
         fontFamily: 'VarelaRoundRegular',
         color: '#839788',

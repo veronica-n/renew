@@ -13,9 +13,10 @@ let commentRef = db.collection("Comments");
 
 // create a user function
 // inputs: POST from frontend (signup page)
-function createUser(email, name, pwd, origin, res) {
+function createUser(authID, email, name, pwd, origin, res) {
+
     const groupName = origin + "-" + res;
-    userRef.add({
+    userRef.doc(authID).add({
             email: email,
             name: name,
             password: pwd,
@@ -30,12 +31,10 @@ function createUser(email, name, pwd, origin, res) {
           console.log("Group created successfully");
       }
 
-      // TO DO: GET - send the userID and groupID to the frontend
-      const userID = userRef.id;
-      return({
-        'userID': userID,
+      // GET - send the groupID to the frontend
+      return(JSON.stringify({
         'groupID': groupName
-      });
+      }));
     });  
 }
 
@@ -50,11 +49,11 @@ async function getUserByID(userID) {
       const userres = user.data().residence;
       const userpsw = user.data().password;
 
-      // TO DO: GET - send the return value to FE
+      // GET - send the return value to FE
       const group = groupRef.doc(usergroup).get()
         .then(group => {
           const posts = group.data().posts;
-          return ({
+          return (JSON.stringify({
             'email': useremail,
             'name': username,
             'country of origin': userorigin,
@@ -62,7 +61,7 @@ async function getUserByID(userID) {
             'password': userpsw,
             'group': usergroup,
             'group posts': posts
-          });
+          }));
         });
     });
 }
@@ -82,8 +81,11 @@ function createPost(userID, groupID, content) {
       groupRef.doc(groupID).update({
           posts: admin.firestore.FieldValue.arrayUnion(postID)
       });
+      // send the postID to React
+      return(JSON.stringify({
+        'postID': postID
+      }));
     })
-    // TO DO: send the postID to React
 }
 
 // create a comment document
@@ -101,7 +103,9 @@ function createComment(userID, postID, content) {
         postRef.doc(postID).update({
         comments: admin.firestore.FieldValue.arrayUnion(commentID)
       });
+      // send the comment ID to React
+      return(JSON.stringify({
+        'commentID': commentID
+      }));
     })
-}  
-
-// module.exports = 
+} 

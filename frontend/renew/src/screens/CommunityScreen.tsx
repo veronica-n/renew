@@ -1,21 +1,16 @@
 import React from 'react';
 import {
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
     View,
-    Image,
     Dimensions,
     FlatList,
     TouchableOpacity,
 } from 'react-native';
-import { ActionButton } from '../components/ActionButton';
 import { ActionPost } from '../components/ActionPost';
-import { ActionText } from '../components/ActionText';
+import { Colours } from '../components/constants';
 import { ScreenContainer } from '../components/ScreenContainer';
+import { CommunityHeader } from '../components/CommunityHeader';
 
 interface Props {
     navigation: any,
@@ -44,13 +39,12 @@ export const CommunityScreen = ({navigation}: Props) => {
     ];
     const headerComponent = () => (
         <View>
-            <Text style={styles.name}>Person's Community</Text>
-            <Text style={styles.subTitle}>This community includes people from ___ who are now living in ___  </Text>
-            <ActionButton 
-                text={'Create a Post'} 
-                backgroundColour={'#4A6FA5'} 
-                onPress={() => {}}
-            />
+            <CommunityHeader name={'Lena'} origin={'Korea'} destination={'Canada'} />
+            <TouchableOpacity onPress={() => navigation.navigate("NewPostScreen")}>
+                <View style={styles.newPostBox}>
+                    <Text style={styles.newPostText}>Create a post...</Text>
+                </View>
+            </TouchableOpacity>
             <View style={styles.border}/>
             <ActionPost text={'Weekly Post'} user={'Renew Team'} backgroundColour={'#4F6D7A'} onPress={() => {}} />
             <View style={styles.border}/>
@@ -66,14 +60,25 @@ export const CommunityScreen = ({navigation}: Props) => {
             <FlatList
                 data={data}
                 renderItem={({ item }) => (
-                    <ActionPost text={item.post} user={item.name} backgroundColour={'#839788'} onPress={() => navigation.navigate('Chat', {id: item.uid})}></ActionPost>
+                    <ActionPost 
+                        text={item.post} 
+                        user={item.name} 
+                        backgroundColour={'#839788'} 
+                        onPress={() => navigation.navigate('ViewPostScreen', {
+                            id: Math.random().toString(),
+                            userId: Math.random().toString(),
+                            user: item.name,
+                            content: item.post,
+                            backgroundColour: '#839788',
+                            timestamp: Date().toString(),
+                            comments: ['hello', 'this is a very long comment blah blah blha blhladjsdh.aksjdhkjhdjks', 'bye']
+                        })}/>
                 )}
                 keyExtractor={item => item.key}
                 ListHeaderComponent={headerComponent}
                 ItemSeparatorComponent={separator}
-                />
-        </ScreenContainer>
-        
+            />
+        </ScreenContainer>    
     );
 };
 
@@ -83,12 +88,11 @@ const styles = StyleSheet.create({
         marginLeft: 21,
         justifyContent: 'center',
         marginTop: 20,
-        fontSize: 25,
-        fontWeight: 'bold',
         fontFamily: 'VarelaRoundRegular',
+        fontSize: 25,
         color: '#4A6FA5',
-      },
-      subTitle: {
+    },
+    subTitle: {
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 21,
@@ -97,12 +101,27 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontFamily: 'VarelaRoundRegular',
         color: '#839788',
-      },
-      
-      border: {
+    },
+    newPostBox: {
+        marginHorizontal: 21,
+        borderWidth: 1,
+        borderRadius: 8,
+        borderColor: Colours.mediumGray,
+        height: 80,
+        alignItems: 'flex-start',
+        paddingLeft: 8,
+        paddingTop: 8,
+        marginBottom: 15,
+    },
+    newPostText: {
+        fontFamily: 'VarelaRoundRegular',
+        color: Colours.mediumGray,
+        fontSize: 15,
+    },
+    border: {
         marginVertical: 12,
         backgroundColor: '#E5E5E5',
         height: 1.5,
         width: Dimensions.get('window').width
-      }
+    }
 });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,6 +10,7 @@ import {
   Image,
   TextInput
 } from 'react-native';
+import { AuthContext } from '../../navigation/AuthProvider';
 import { ActionButton } from '../components/ActionButton';
 import { ScreenContainer } from '../components/ScreenContainer';
 
@@ -18,6 +19,8 @@ interface Props {
 }
 
 export const ProfileScreen = ({navigation}: Props) => {
+  // @ts-ignore
+  const {logout} = useContext(AuthContext);
   const { height } = Dimensions.get('window');
   const data = {name: "Lena Kim",
                 email: "lena@gmail.com",
@@ -27,7 +30,6 @@ export const ProfileScreen = ({navigation}: Props) => {
   
   return (
     <View>
-        
         <Text style={styles.title}>Profile</Text> 
         <View style={styles.rec}>
             <Text style={styles.name}>{data.name}</Text>  
@@ -44,7 +46,7 @@ export const ProfileScreen = ({navigation}: Props) => {
         <ActionButton 
                 text={'Sign out'} 
                 backgroundColour={'#4A6FA5'} 
-                onPress={() => {}}
+                onPress={() => logout()}
             />
         </View>
     </View>
@@ -53,26 +55,23 @@ export const ProfileScreen = ({navigation}: Props) => {
 
 const styles = StyleSheet.create({
     title: {
-      marginTop: 41,
+      marginTop: 21,
       marginLeft: 29,
       fontFamily: 'VarelaRoundRegular',
       fontSize: 25,
       color: '#4A6FA5',
-      fontWeight: 'bold',
       }, 
     name: {
         marginTop: 20,
         fontFamily: 'VarelaRoundRegular',
         fontSize: 28,
         color: '#4A6FA5',
-        fontWeight: 'bold',
         }, 
     info: {
         marginTop: 30,
         fontFamily: 'VarelaRoundRegular',
         fontSize: 17,
         color: '#4A6FA5',
-        fontWeight: 'bold',
         alignSelf: 'center'
         }, 
     to: {

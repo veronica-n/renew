@@ -17,24 +17,24 @@ export const MainStack = () => {
             intialRouteName='CommunityStack'
             screenOptions={{
                 headerShown: false,
+                tabBarStyle: {
+                    backgroundColor: '#FFFFFF',
+                    borderTopWidth: 0,
+                    elevation: 0,
+                    height: 65,
+                    paddingBottom: 5
+                }
             }}
             tabBarOptions={{
-                showLabel: false,
                 activeTintColor: Colours.black,
                 inactiveTintColor: Colours.darkTurquoise,
-                style: {
-                backgroundColor: '#FFFFFF',
-                borderTopWidth: 0,
-                elevation: 0,
-                height: 100,
-                }
             }}
         >
             <Tab.Screen name='Community'
                 component={CommunityStack}
                 options = {{
                     tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="home-outline" color={color} size={40} />
+                    <Ionicons name="people-outline" color={color} size={35} />
                     ),
                 }}
             />
@@ -42,7 +42,7 @@ export const MainStack = () => {
                 component={ProfileScreen}
                 options = {{
                     tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="cart-outline" color={color} size={35} />
+                    <Ionicons name="heart-outline" color={color} size={35} />
                     ),
                 }}
             />
@@ -50,7 +50,7 @@ export const MainStack = () => {
                 component={ProfileScreen}
                 options = {{
                     tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="storefront" color={color} size={35} />
+                    <Ionicons name="person-circle-outline" color={color} size={35} />
                     ),
                 }}
             />

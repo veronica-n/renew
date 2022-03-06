@@ -18,16 +18,25 @@ interface Props {
 export const ActionPost = ({text, user, backgroundColour, onPress, children}: Props) => {
     return (
         <View>
+            <ActionPostContent text={text} user={user} backgroundColour={backgroundColour} onPress={onPress} />
+            <TouchableOpacity 
+                style={{...styles.orientationComent}} onPress={onPress} 
+            >
+                <Text style={styles.comment}>View all comments</Text>
+            </TouchableOpacity>
+        </View>
+        
+    );
+};
+
+export const ActionPostContent = ({text, user, backgroundColour, onPress, children}: Props) => {
+    return (
+        <View> 
             <Text style={styles.user}>{user} </Text>
             <TouchableOpacity 
                 style={{...styles.orientation, backgroundColor: backgroundColour}} onPress={onPress}
             >
                 <Text style={styles.text}>{text}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-                style={{...styles.orientationComent}} onPress={() => {}} 
-            >
-                <Text style={styles.comment}>View all comments</Text>
             </TouchableOpacity>
         </View>
         
@@ -40,6 +49,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '100%',
         height: 106,
+        marginBottom: 8
     },
     text: {
         fontFamily: 'VarelaRoundRegular',

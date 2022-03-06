@@ -2,7 +2,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
 import {LandingScreen} from '../src/screens/LandingScreen';
+import {LoginScreen} from '../src/screens/LoginScreen';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +15,7 @@ export const LoginStack = () => {
                              headerShown: false
                          }}>
           <Stack.Screen name='LandingScreen' component={LandingScreen}/>
+          <Stack.Screen name='LoginScreen' component={LoginScreen}/>
         </Stack.Navigator>
       );
 };

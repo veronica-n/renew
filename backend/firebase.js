@@ -13,10 +13,10 @@ let commentRef = db.collection("Comments");
 
 // create a user function
 // inputs: POST from frontend (signup page)
-function createUser(email, name, pwd, origin, res) {
+function createUser(authID, email, name, pwd, origin, res) {
 
     const groupName = origin + "-" + res;
-    userRef.add({
+    userRef.doc(authID).add({
             email: email,
             name: name,
             password: pwd,
@@ -31,10 +31,8 @@ function createUser(email, name, pwd, origin, res) {
           console.log("Group created successfully");
       }
 
-      // GET - send the userID and groupID to the frontend
-      const userID = userRef.id;
+      // GET - send the groupID to the frontend
       return(JSON.stringify({
-        'userID': userID,
         'groupID': groupName
       }));
     });  

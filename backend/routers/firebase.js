@@ -8,8 +8,8 @@ router.post('/post', createPost);
 router.post('/comment', createComment);
 
 function createUser(req, res, next){
-    const ret = Firebase.createUser(req.body.email, req.body.name, req.body.password, 
-        req.body.origin, req.body.residence, req.body.group);
+    const ret = Firebase.createUser(req.body.authID, req.body.email, req.body.name, req.body.password, 
+        req.body.origin, req.body.residence);
     res.send(ret); // send userID and groupID
 }
 

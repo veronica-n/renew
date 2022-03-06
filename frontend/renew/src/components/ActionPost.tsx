@@ -9,14 +9,16 @@ import {
 
 interface Props {
     text: string;
+    user: string,
     backgroundColour: string;
     onPress: () => void;
     children?: any;
 }
 
-export const ActionPost = ({text, backgroundColour, onPress, children}: Props) => {
+export const ActionPost = ({text, user, backgroundColour, onPress, children}: Props) => {
     return (
         <View>
+            <Text style={styles.user}>{user} </Text>
             <TouchableOpacity 
                 style={{...styles.orientation, backgroundColor: backgroundColour}} onPress={onPress}
             >
@@ -53,4 +55,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    user: {
+        textAlign: 'left',
+        fontSize: 16,
+        color: '#4F6D7A',
+        fontFamily: 'VarelaRoundRegular',
+        marginLeft: 10,
+        marginBottom: 10,
+      },
 });

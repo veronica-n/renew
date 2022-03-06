@@ -21,16 +21,19 @@ export const Community = ({navigation}) => {
     const data = [
         {
           name: "User #1",
+          post: "Bubble tea?",
           uid: '111',
           key: '1'
         },
         {
             name: "User #2",
+            post: "Library?",
             uid: '222',
             key: '2'
           },
         {
             name: "User #3",
+            post: "clubs?",
             uid: '333',
             key: '3'
         }
@@ -45,8 +48,7 @@ export const Community = ({navigation}) => {
                 onPress={() => {}}
             />
             <View style={styles.border}/>
-            <Text style={styles.team}>Renew Team </Text>
-            <ActionPost text={'Weekly Post'} backgroundColour={'#4F6D7A'} onPress={() => {}} />
+            <ActionPost text={'Weekly Post'} user={'Renew Team'} backgroundColour={'#4F6D7A'} onPress={() => {}} />
             <View style={styles.border}/>
         </View>
     )
@@ -59,7 +61,7 @@ export const Community = ({navigation}) => {
             <FlatList
                 data={data}
                 renderItem={({ item }) => (
-                    <ActionPost text={item.name} backgroundColour={'#839788'} onPress={() => navigation.navigate('Chat', {id: item.uid})}></ActionPost>
+                    <ActionPost text={item.post} user={item.name} backgroundColour={'#839788'} onPress={() => navigation.navigate('Chat', {id: item.uid})}></ActionPost>
                 )}
                 keyExtractor={item => item.key}
                 ListHeaderComponent={headerComponent}
@@ -93,14 +95,7 @@ const styles = StyleSheet.create({
         fontFamily: 'VarelaRoundRegular',
         color: '#839788',
       },
-      team: {
-        textAlign: 'left',
-        fontSize: 16,
-        color: '#4F6D7A',
-        fontFamily: 'VarelaRoundRegular',
-        marginLeft: 10,
-        marginBottom: 10,
-      },
+      
       border: {
         marginVertical: 12,
         backgroundColor: '#E5E5E5',
